@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="ImageTestGallery.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Show gif" Clicked="OnShowGifClicked" />
+        <ToolbarItem Text="Add" Clicked="OnAddImageClicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+               <AbsoluteLayout Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+         
+                <flv:FlowListView x:Name="ImageList" FlowColumnCount="2" SeparatorVisibility="None" HasUnevenRows="false">
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Grid Padding="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ffimageloading:CachedImage HeightRequest="200" Aspect="AspectFit"
+							DownsampleHeight="200" DownsampleUseDipUnits="false" 
+							Source="{Binding smallImagePath}"/>
+                        <Label x:Name="Label" HorizontalOptions="Fill" TextColor="Red" HorizontalTextAlignment="Center" VerticalOptions="End"
+							BackgroundColor="Silver" Opacity="0.7" Text="{Binding parameters.weather}"/>
+                    </Grid>
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
+                 
+            <ContentView x:Name="popupImageView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+
+                        <ffimageloading:CachedImage 
+                Margin="17, 3, 0, 0"
+                WidthRequest="200"
+                HeightRequest="200"
+                            x:Name="imgPopup"
+        >
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation/>
+                            </ffimageloading:CachedImage.Transformations>
+                        </ffimageloading:CachedImage>
+                      
+
+                    </StackLayout>
+                    <Button Text="Close" Clicked="OnCloseButtonClicked" />
+                </StackLayout>
+
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

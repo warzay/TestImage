@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ImageTestGallery.AddImage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="OnAddImageClicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout VerticalOptions="StartAndExpand">
+                <Image x:Name="imgAvatar" HeightRequest="80" WidthRequest="80" Aspect="AspectFit"></Image>
+                <Button Text="Select image" Clicked="OnImageButtonClicked" />
+                <Button Text="Take photo" Clicked="OnPhotoButtonClicked" />
+                <Label Text="#Hastag" />
+                <Entry x:Name="hastagEntry" Placeholder="#tag" />
+                <Label Text="Description" />
+                <Entry x:Name="descriptionEntry" Placeholder="#tag" />
+                <Label x:Name="messageLabel" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
